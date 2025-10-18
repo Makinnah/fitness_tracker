@@ -19,3 +19,24 @@ class Activity(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.activity_type} on {self.date}"
+
+
+#Goals for users
+from django.db import models
+from django.contrib.auth.models import User
+
+class Goal(models.Model):
+    GOAL_TYPES = [
+        ('distance', 'Distance'),
+        ('calories', 'Calories'),
+        ('duration', 'Duration'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    goal_type = models.CharField(max_length=10, choices=GOAL_TYPES)
+    target_value = models.FloatField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.user.username}'s {self.goal_type} goal: {self.target_value}"

@@ -8,3 +8,6 @@ router.register(r'activities', ActivityViewSet, basename='activity')
 urlpatterns = [
     path('', include(router.urls)),
 ]
+
+#Registering the new viewset
+router.register(r'goals', GoalViewSet, basename='goal')
