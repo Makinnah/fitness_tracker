@@ -25,6 +25,11 @@ SECRET_KEY = 'django-insecure-20pql8la&f%i33y#^^c=emd)m2&&b4uz%ljg@zn*tnhkpjy3)m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+import os
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['https://dashboard.render.com/web/srv-d3qd9pl6ubrc73froqn0/deploys/dep-d3qd9q56ubrc73froqrg.onrender.com']  # Replace with actual Render URL
 ALLOWED_HOSTS = []
 
 
